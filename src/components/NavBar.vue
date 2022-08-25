@@ -21,8 +21,8 @@
         <h1 class="text-sm text-gray-600 -mb-1" style="font-weight: 500">
           Error Browser
         </h1>
-        <p class="text-xs text-gray-600 mt-0.5">
-          {{ timestamp.toISOString().replace('T', ' ').split('.')[0] }}
+        <p class="text-xs text-gray-600 mt-0.5" title="Last Updated">
+          {{ timestamp.toLocaleString() }}
         </p>
       </div>
 
