@@ -1,0 +1,21 @@
+@tailwind base;
+/* @tailwind components; */
+@tailwind utilities;
+
+html {
+  background: theme('colors.gray.25');
+  color: theme('colors.black');
+  font-family: 'Inter', sans-serif;
+}
+
+pre {
+  font-family: 'Inconsolata', monospace;
+}
+
+.w-max-card {
+  max-width: 1200px;
+}
+
+a:hover {
+  @apply text-blue-600;
+}
