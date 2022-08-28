@@ -22,7 +22,7 @@
           Error Browser
         </h1>
         <p class="text-xs text-gray-600 mt-0.5" title="Last Updated">
-          {{ timestamp.toLocaleString() }}
+          {{ timestamp.toUTCString() }}
         </p>
       </div>
 

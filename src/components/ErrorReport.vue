@@ -6,15 +6,29 @@
       </p>
     </div>
 
-    <div
-      class="overflow-auto gap-0 flex flex-col cursor-pointer w-full"
-      @click="collapsed = !collapsed"
-    >
-      <div class="flex justify-between h-14 items-center p-4">
+    <div class="overflow-auto gap-0 flex flex-col w-full">
+      <div
+        class="
+          flex
+          justify-between
+          h-14
+          items-center
+          p-4
+          cursor-pointer
+          hover:bg-gray-50
+        "
+        @click="collapsed = !collapsed"
+      >
         <h1 class="font-bold">
           {{ errorReport.error_name }}
         </h1>
-        <p class="text-xs text-gray-600">{{ errorReport.name }}</p>
+        <div class="flex gap-4">
+          <p class="text-xs text-gray-600">{{ errorReport.name }}</p>
+          <feather-icon
+            class="w-4 h-4 text-gray-600"
+            :name="collapsed ? 'chevron-down' : 'chevron-up'"
+          />
+        </div>
       </div>
 
       <hr />
@@ -41,7 +55,7 @@
 
       <!-- Stack  -->
       <hr v-if="!collapsed" />
-      <div v-if="!collapsed" class="p-4">
+      <div v-if="!collapsed" class="p-4" style="width: calc(100vw - 5.25rem)">
         <p class="text-gray-600 text-xs">Stack</p>
         <pre class="text-sm overflow-auto mt-1">{{ errorReport.stack }}</pre>
       </div>
@@ -49,6 +63,7 @@
   </div>
 </template>
 <script>
+import FeatherIcon from './FeatherIcon.vue';
 export default {
   props: {
     errorReport: Object,
@@ -63,5 +78,6 @@ export default {
       return date.toDateString();
     },
   },
+  components: { FeatherIcon },
 };
 </script>
