@@ -90,6 +90,6 @@ export async function fetchErrorReports() {
       done: false,
     } as ErrorReport;
   });
-  const timestamp = new Date('2022-08-25 13:47:24.040930');
+  const timestamp = new Date(jsonData.message.timestamp);
   return { errorReports, timestamp };
 }

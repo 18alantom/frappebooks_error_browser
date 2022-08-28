@@ -41,6 +41,7 @@ export default {
     } catch (err) {
       console.log(err);
     }
+
     this.errorReports = data.errorReports;
     this.timestamp = data.timestamp;
   },

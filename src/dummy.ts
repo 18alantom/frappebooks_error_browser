@@ -1,7 +1,6 @@
 import { ErrorReport } from './types';
 
 export function getDummyData() {
-  const timestamp = new Date('2022-08-25 16:10:53.729529');
   const errorReports: ErrorReport[] = [
     {
       name: '00ef11ed18',
@@ -296,5 +295,6 @@ export function getDummyData() {
     } as ErrorReport;
   });
 
+  const timestamp = new Date('2022-08-25 16:10:53.729529');
   return { errorReports, timestamp };
 }
