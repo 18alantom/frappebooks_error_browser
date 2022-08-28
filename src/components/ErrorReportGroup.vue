@@ -1,16 +1,3 @@
-<script setup lang="ts">
-interface Data {
-  observer: IntersectionObserver | null;
-  end: number;
-}
-
-interface Props {
-  errorReports: ErrorReport[];
-  controls: Controls;
-}
-
-const props = defineProps<Props>();
-</script>
 <template>
   <div class="flex flex-col gap-4 items-center p-4">
     <template v-for="(li, i) in list.slice(0, end)">
@@ -32,30 +19,33 @@ const props = defineProps<Props>();
     </template>
   </div>
 </template>
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue';
 import {
-getGroupHeader,
-groupErrorReports,
-sortErrorReports
+  getGroupHeader,
+  groupErrorReports,
+  sortErrorReports,
 } from '../helpers';
-import { Controls, ErrorReport } from '../types';
 import ERGHeader from './ERGHeader.vue';
 import ErrorReportVue from './ErrorReport.vue';
 const minCount = 20;
 
 export default defineComponent({
-  data(): Data {
+  props: {
+    errorReports: Object,
+    controls: Object,
+  },
+  data() {
     return { observer: null, end: minCount };
   },
   mounted() {
     this.observer = new IntersectionObserver(this.observerCallback);
   },
   methods: {
-    getHeader(errorReports: ErrorReport[]) {
+    getHeader(errorReports) {
       return getGroupHeader(this.controls, errorReports);
     },
-    setObserver(el: Element, isMounted: boolean) {
+    setObserver(el, isMounted) {
       if (!(el instanceof Element) || !this.observer) {
         return;
       }
@@ -66,7 +56,7 @@ export default defineComponent({
         this.observer.unobserve(el);
       }
     },
-    observerCallback(entries: IntersectionObserverEntry[]) {
+    observerCallback(entries) {
       for (const entry of entries) {
         this.handleIntersection(entry);
       }
@@ -76,13 +66,13 @@ export default defineComponent({
       isIntersecting,
       rootBounds,
       boundingClientRect,
-    }: IntersectionObserverEntry) {
-      const index = parseInt((target as HTMLElement).dataset.index ?? '-1');
+    }) {
+      const index = parseInt(target.dataset.index ?? '-1');
       if (isIntersecting && index + 1 === this.end) {
         this.end += 1;
       }
 
-      const { bottom: rootBottom } = rootBounds!;
+      const { bottom: rootBottom } = rootBounds;
       const { top: targetTop } = boundingClientRect;
 
       if (!isIntersecting && targetTop > rootBottom) {
