@@ -1,18 +1,5 @@
 <template>
-  <div
-    class="
-      bg-white
-      w-full
-      sticky
-      top-0
-      flex
-      justify-center
-      border-b
-      py-4
-      lg:px-4
-      md:px-4
-    "
-  >
+  <div class="bg-white w-full sticky top-0 flex justify-center border-b p-4">
     <div
       class="w-max-card w-full sticky top-0 flex justify-between items-center"
     >
@@ -26,7 +13,10 @@
         </p>
       </div>
 
-      <div class="flex text-sm gap-8 text-gray-800" style="font-weight: 500">
+      <div
+        class="hidden sm:flex text-sm gap-8 text-gray-800"
+        style="font-weight: 500"
+      >
         <a href="https://frappebooks.com/">Home</a>
         <a href="https://frappebooks.com/download">Download</a>
         <a href="https://t.me/frappebooks">Community</a>

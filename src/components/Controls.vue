@@ -21,9 +21,9 @@
       <hr class="mt-4" v-if="!collapsed" />
 
       <!-- Body -->
-      <div class="flex gap-4" v-if="!collapsed">
+      <div class="grid md:grid-cols-3 grid-cols-2" v-if="!collapsed">
         <!-- Order -->
-        <div class="text-sm w-48 shrink-0 border-r p-4">
+        <div class="text-sm shrink-0 border-r p-4">
           <p class="text-gray-600 text-xs">Order By</p>
           <div class="flex items-center">
             <select
@@ -60,7 +60,7 @@
         </div>
 
         <!-- Group -->
-        <div class="text-sm w-48 shrink-0 border-r py-4 pr-4">
+        <div class="text-sm shrink-0 border-r p-4">
           <p class="text-gray-600 text-xs">Group By</p>
           <select
             name="group-by"
@@ -87,8 +87,18 @@
         </div>
 
         <!-- Group -->
-        <div class="text-sm w-full py-4 pr-4">
-          <p class="text-gray-600 text-xs">Grouping Substring</p>
+        <div
+          class="
+            text-sm
+            w-full
+            p-4
+            md:col-span-1
+            col-span-2
+            border-t
+            md:border-0
+          "
+        >
+          <p class="text-gray-600 text-xs">Filter by Substring</p>
           <input
             :value="controls.groupSubstring"
             @input="
