@@ -22,9 +22,9 @@
 <script>
 import { defineComponent } from 'vue';
 import {
-  getGroupHeader,
-  groupErrorReports,
-  sortErrorReports,
+getGroupHeader,
+groupErrorReports,
+sortErrorReports
 } from '../helpers';
 import ERGHeader from './ERGHeader.vue';
 import ErrorReportVue from './ErrorReport.vue';
@@ -42,9 +42,6 @@ export default defineComponent({
     this.observer = new IntersectionObserver(this.observerCallback);
   },
   methods: {
-    getHeader(errorReports) {
-      return getGroupHeader(this.controls, errorReports);
-    },
     setObserver(el, isMounted) {
       if (!(el instanceof Element) || !this.observer) {
         return;
@@ -95,7 +92,7 @@ export default defineComponent({
       let i = 1;
       for (const group in this.groups) {
         const errorReports = this.groups[group];
-        const item = this.getHeader(errorReports);
+        const item = getGroupHeader(this.controls, errorReports);
         list.push({ index: i++, item, type: 'header' });
 
         for (const i in errorReports) {

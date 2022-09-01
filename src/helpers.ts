@@ -23,7 +23,7 @@ export function groupErrorReports(
   const groups: Record<string, ErrorReport[]> = {};
 
   for (const er of errorReports) {
-    if (groupBy === 'none' || (groupBy === 'message' && !groupSubstring)) {
+    if (groupBy === 'message' && !groupSubstring) {
       groups['all'] ??= [];
       groups['all'].push(er);
       continue;
@@ -57,7 +57,7 @@ export function getGroupHeader(
   }
 
   let title = '';
-  if (groupBy === 'none' || (groupBy === 'message' && !groupSubstring)) {
+  if (groupBy === 'message' && !groupSubstring) {
     title = 'All';
   } else {
     title = errorReports[0][groupBy];
@@ -67,8 +67,8 @@ export function getGroupHeader(
     title = groupSubstring;
   }
 
-  if (title.length > 32) {
-    title = title.slice(0, 29) + '...';
+  if (title.length > 64) {
+    title = title.slice(0, 61) + '...';
   }
 
   return { title, total, lastAppeared, count: errorReports.length };
@@ -87,6 +87,7 @@ export async function fetchErrorReports() {
       message: e.message,
       stack: e.stack,
       occurances: e.count,
+      version: e.version ?? '<=0.6.3-beta.0',
       done: false,
     } as ErrorReport;
   });

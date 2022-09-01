@@ -291,6 +291,7 @@ export function getDummyData() {
       message: e.message,
       stack: e.stack,
       occurances: e.count,
+      version: '<=0.6.3-beta.0',
       done: false,
     } as ErrorReport;
   });

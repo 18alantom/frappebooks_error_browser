@@ -79,10 +79,10 @@
               cursor-pointer
             "
           >
-            <option value="none">None</option>
-            <option value="error_name">Error Name</option>
             <option value="message">Message</option>
+            <option value="error_name">Error Name</option>
             <option value="stack">Stack</option>
+            <option value="version">Version</option>
           </select>
         </div>
 
@@ -116,15 +116,7 @@
               text-sm
               disabled:bg-gray-200
             "
-            :placeholder="
-              controls.groupBy === 'none'
-                ? 'change Group By to enable'
-                : `enter a substring to group by ${controls.groupBy.replace(
-                    '_',
-                    ' '
-                  )}`
-            "
-            :disabled="controls.groupBy === 'none'"
+            :placeholder="`enter a substring to filter by`"
           />
         </div>
       </div>
@@ -148,13 +140,4 @@ export default {
   },
   components: { FeatherIcon },
 };
-
-/**
- group by: none, error_name, message
- group substring:
-
- order by: occurances, last appeared
- order: asc, desc
- 
- */
 </script>

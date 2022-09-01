@@ -30,7 +30,7 @@ export default {
         orderAsc: false,
         orderBy: 'occurances',
         groupSubstring: '',
-        groupBy: 'none',
+        groupBy: 'message',
       },
     };
   },

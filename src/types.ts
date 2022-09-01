@@ -5,6 +5,7 @@ export interface ErrorReport {
   message: string;
   stack: string;
   occurances: number;
+  version: string;
   done?: boolean;
 }
 
@@ -12,7 +13,7 @@ export interface Controls {
   orderAsc: boolean;
   orderBy: 'occurances' | 'last';
   groupSubstring: string;
-  groupBy: 'none' | 'error_name' | 'stack' | 'message';
+  groupBy: 'error_name' | 'stack' | 'message' | 'version';
 }
 
 export interface ErrorFetchResponse {
@@ -24,6 +25,7 @@ export interface ErrorFetchResponse {
       message: string;
       name: string;
       stack: string;
+      version?: string;
     }[];
     timestamp: string;
   };
