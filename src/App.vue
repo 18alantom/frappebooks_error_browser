@@ -5,11 +5,7 @@
     <Controls
       class="sticky bottom-0 mt-auto"
       :controls="controls"
-      @control-change="
-        (name, value) => {
-          controls[name] = value;
-        }
-      "
+      @control-change="handleControlChange"
     />
   </div>
 </template>
@@ -30,9 +26,23 @@ export default {
         orderAsc: false,
         orderBy: 'occurances',
         groupSubstring: '',
+        minOccurances: 1,
+        minDate: new Date(),
         groupBy: 'message',
       },
     };
+  },
+  methods: {
+    handleControlChange(name, value) {
+      this.controls[name] = value;
+    },
+    setMinDate() {
+      for (const { last } of this.errorReports) {
+        if (last < this.controls.minDate) {
+          this.controls.minDate = last;
+        }
+      }
+    },
   },
   async mounted() {
     let data = getDummyData();
@@ -44,6 +54,8 @@ export default {
 
     this.errorReports = data.errorReports;
     this.timestamp = data.timestamp;
+    this.setMinDate();
+    window.app = this;
   },
   components: { ErrorReport, Controls, ErrorReportGroup, NavBar },
 };

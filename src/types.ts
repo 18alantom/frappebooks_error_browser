@@ -13,6 +13,8 @@ export interface Controls {
   orderAsc: boolean;
   orderBy: 'occurances' | 'last';
   groupSubstring: string;
+  minOccurances: number;
+  minDate: Date;
   groupBy: 'error_name' | 'stack' | 'message' | 'version';
 }
 

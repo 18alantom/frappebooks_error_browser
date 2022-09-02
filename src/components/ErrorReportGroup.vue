@@ -22,6 +22,7 @@
 <script>
 import { defineComponent } from 'vue';
 import {
+filterErrorReports,
 getGroupHeader,
 groupErrorReports,
 sortErrorReports
@@ -79,7 +80,8 @@ export default defineComponent({
   },
   computed: {
     groups() {
-      const groups = groupErrorReports(this.controls, this.errorReports);
+      const errorReports = filterErrorReports(this.controls, this.errorReports);
+      const groups = groupErrorReports(this.controls, errorReports);
       for (const group in groups) {
         sortErrorReports(this.controls, groups[group]);
       }

@@ -16,6 +16,18 @@ export function sortErrorReports(
   });
 }
 
+export function filterErrorReports(
+  { minDate, minOccurances }: Controls,
+  errorReports: ErrorReport[]
+) {
+  return errorReports.filter(({ occurances, last }) => {
+    const o = occurances >= minOccurances;
+    const d = last >= minDate;
+
+    return o && d;
+  });
+}
+
 export function groupErrorReports(
   { groupBy, groupSubstring }: Controls,
   errorReports: ErrorReport[]
