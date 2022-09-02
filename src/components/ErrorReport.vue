@@ -34,24 +34,31 @@
       <hr />
       <div class="flex flex-col md:flex-row">
         <div class="flex md:border-r">
-          <div class="text-sm p-4 border-r w-36 shrink-0">
+          <div class="text-sm p-4 border-r w-32 sm:w-36 shrink-0">
             <p class="text-gray-600 text-xs">Occurances</p>
             <p class="mt-1">
               {{ errorReport.occurances }}
             </p>
           </div>
 
-          <div class="text-sm p-4 w-36 shrink-0">
+          <div class="text-sm p-4 border-r w-32 sm:w-36 shrink-0">
             <p class="text-gray-600 text-xs">Last Appeared</p>
             <p class="mt-1">
               {{ errorReport.last.toISOString().split('T')[0] }}
+            </p>
+          </div>
+
+          <div class="text-sm p-4 w-36 shrink-0">
+            <p class="text-gray-600 text-xs">Version</p>
+            <p class="mt-1">
+              {{ errorReport.version }}
             </p>
           </div>
         </div>
 
         <div class="text-sm p-4 border-t md:border-0">
           <p class="text-gray-600 text-xs">Message</p>
-          <p class="mt-1 break-all md:break-normal">
+          <p class="mt-1 break-all lg:break-normal">
             {{ errorReport.message }}
           </p>
         </div>
